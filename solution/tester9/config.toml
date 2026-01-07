@@ -1,0 +1,25 @@
+[[execs]]
+filename = "connections.cpp"
+overwrite = { prob_id = "connections" }
+tests = [{ testcase = "all", expect = "AC" }]
+
+[[execs]]
+filename = "connections_tle.cpp"
+overwrite = { prob_id = "connections" }
+tests = [{ testcase = "6", expect = "TLE" }]
+
+[[execs]]
+filename = "connections_brute.cpp"
+overwrite = { prob_id = "connections" }
+tests = [
+    { testcase = "2", expect = "AC" },
+]
+
+[[execs]]
+filename = "connections_wa.cpp"
+overwrite = { prob_id = "connections" }
+tests = [
+    { testcase = "1", expect = "WA" },
+    { testcase = "2", expect = "WA" },
+    { testcase = "3", expect = "WA" },
+]

@@ -1,0 +1,32 @@
+[[execs]]
+filename = "diameter.cpp"
+overwrite = { prob_id = "diameter" }
+tests = [{ testcase = "all", expect = "AC" }]
+
+[[execs]]
+filename = "bruteforce.cpp"
+overwrite = { prob_id = "diameter" }
+tests = [
+  { testcase = "0", expect = "AC" },
+  { testcase = "1", expect = "AC" },
+  { testcase = "2", expect = "TLE" },
+  { testcase = "3", expect = "TLE" },
+  { testcase = "4", expect = "TLE" }
+]
+
+[[execs]]
+filename = "tree_diameter.cpp"
+overwrite = { prob_id = "diameter" }
+tests = [
+  { testcase = "2", expect = "AC" }
+]
+
+[[execs]]
+filename = "diameter_no_bitset.cpp"
+overwrite = { prob_id = "diameter" }
+tests = [
+  { testcase = "1", expect = "AC" },
+  { testcase = "2", expect = "AC" },
+  { testcase = "3", expect = "AC" },
+  { testcase = "4", expect = "TLE" }
+]

@@ -1,0 +1,97 @@
+[[execs]]
+filename = "parade.cpp"
+overwrite = { prob_id = "parade" }
+tests = [{ testcase = "all", expect = "AC" }]
+
+[[execs]]
+filename = "parade_s1.cpp"
+overwrite = { prob_id = "parade" }
+tests = [
+  { testcase = "0", expect = "WA" },
+  { testcase = "1", expect = "AC" },
+  { testcase = "2", expect = "WA" },
+  { testcase = "3", expect = "WA" },
+  { testcase = "4", expect = "WA" },
+]
+
+[[execs]]
+filename = "parade_s1_wa.cpp"
+overwrite = { prob_id = "parade" }
+tests = [{ testcase = "all", expect = "WA" }]
+
+[[execs]]
+filename = "parade_s2.cpp"
+overwrite = { prob_id = "parade" }
+tests = [
+  { testcase = "0", expect = "AC" },
+  { testcase = "1", expect = "RE" },
+  { testcase = "2", expect = "AC" },
+  { testcase = "3", expect = "RE" },
+  { testcase = "4", expect = "RE" },
+]
+
+[[execs]]
+filename = "parade_s3.cpp"
+overwrite = { prob_id = "parade" }
+tests = [
+  { testcase = "0", expect = "WA" },
+  { testcase = "1", expect = "RE" },
+  { testcase = "2", expect = "RE" },
+  { testcase = "3", expect = "AC" },
+  { testcase = "4", expect = "RE" },
+]
+
+[[execs]]
+filename = "parade_hulan_B100.cpp"
+overwrite = { prob_id = "parade" }
+tests = [
+  { testcase = "0", expect = "AC" },
+  { testcase = "1", expect = "WA" },
+  { testcase = "2", expect = "WA" },
+  { testcase = "3", expect = "WA" },
+  { testcase = "4", expect = "WA" },
+]
+
+[[execs]]
+filename = "parade_lawfung.cpp"
+overwrite = { prob_id = "parade" }
+tests = [
+  { testcase = "0", expect = "AC" },
+  { testcase = "1", expect = "AC" },
+  { testcase = "2", expect = "WA" },
+  { testcase = "3", expect = "WA" },
+  { testcase = "4", expect = "TLE" },
+]
+
+[[execs]]
+filename = "diameter.cpp"
+overwrite = { prob_id = "diameter" }
+tests = [{ testcase = "all", expect = "AC" }]
+
+[[execs]]
+filename = "diameter_naive.cpp"
+overwrite = { prob_id = "diameter" }
+tests = [
+  { testcase = "0", expect = "AC" },
+  { testcase = "1", expect = "AC" },
+  { testcase = "2", expect = "AC" },
+  { testcase = "3", expect = "AC" },
+  { testcase = "4", expect = "TLE" },
+]
+
+[[execs]]
+filename = "diameter_naive_fast.cpp"
+overwrite = { prob_id = "diameter" }
+tests = [
+  { testcase = "0", expect = "AC" },
+  { testcase = "1", expect = "AC" },
+  { testcase = "2", expect = "AC" },
+  { testcase = "3", expect = "AC" },
+  { testcase = "4", expect = "TLE" },
+]
+
+[[execs]]
+filename = "datacenter.cpp"
+overwrite = { prob_id = "datacenter" }
+tests = [{ testcase = "all", expect = "AC" }]
+

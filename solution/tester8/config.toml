@@ -1,0 +1,72 @@
+[[execs]]
+filename = "postoffice_n_log_C.cpp"
+overwrite = { prob_id = "postoffice" }
+tests = [
+  { testcase = "0", expect = "AC" },
+  { testcase = "1", expect = "AC" },
+  { testcase = "2", expect = "AC" },
+  { testcase = "3", expect = "AC" },
+  { testcase = "4", expect = "AC" }
+  { testcase = "5", expect = "AC" }
+]
+
+[[execs]]
+filename = "postoffice_n_log_n_log_C.cpp"
+overwrite = { prob_id = "postoffice" }
+tests = [
+  { testcase = "0", expect = "AC" },
+  { testcase = "1", expect = "AC" },
+  { testcase = "2", expect = "AC" },
+  { testcase = "3", expect = "AC" },
+  { testcase = "4", expect = "AC" }
+  { testcase = "5", expect = "AC" }
+]
+
+[[execs]]
+filename = "postoffice_subtask_1.cpp"
+overwrite = { prob_id = "postoffice" }
+tests = [
+  { testcase = "0", expect = "WA" },
+  { testcase = "1", expect = "AC" },
+  { testcase = "2", expect = "WA" },
+  { testcase = "3", expect = "TLE" },
+  { testcase = "4", expect = "TLE" }
+  { testcase = "5", expect = "TLE" }
+]
+
+[[execs]]
+filename = "postoffice_subtask_2.cpp"
+overwrite = { prob_id = "postoffice" }
+tests = [
+  { testcase = "0", expect = "AC" },
+  { testcase = "1", expect = "AC" },
+  { testcase = "2", expect = "AC" },
+  { testcase = "3", expect = "TLE" },
+  { testcase = "4", expect = "TLE" }
+  { testcase = "5", expect = "TLE" }
+]
+
+[[execs]]
+filename = "postoffice_subtask_3.cpp"
+overwrite = { prob_id = "postoffice" }
+tests = [
+  { testcase = "0", expect = "AC" },
+  { testcase = "1", expect = "AC" },
+  { testcase = "2", expect = "AC" },
+  { testcase = "3", expect = "AC" },
+  { testcase = "4", expect = "TLE" }
+  { testcase = "5", expect = "TLE" }
+]
+
+[[execs]]
+filename = "postoffice_subtask_4.cpp"
+overwrite = { prob_id = "postoffice" }
+tests = [
+  { testcase = "0", expect = "AC" },
+  { testcase = "1", expect = "AC" },
+  { testcase = "2", expect = "AC" },
+  { testcase = "3", expect = "AC" },
+  { testcase = "4", expect = "AC" }
+  { testcase = "5", expect = "TLE" }
+]
+

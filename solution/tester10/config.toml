@@ -1,0 +1,55 @@
+[[execs]]
+filename = "brackets_subtask_1.cpp"
+overwrite = { prob_id = "brackets" }
+tests = [
+  { testcase = "0", expect = "WA" },
+  { testcase = "1", expect = "AC" },
+  { testcase = "2", expect = "WA" },
+  { testcase = "3", expect = "WA" },
+]
+
+[[execs]]
+filename = "brackets_subtask_1_WA_1.cpp"
+overwrite = { prob_id = "brackets" }
+tests = [{ testcase = "all", expect = "WA" }]
+
+[[execs]]
+filename = "brackets_subtask_1_WA_2.cpp"
+overwrite = { prob_id = "brackets" }
+tests = [{ testcase = "all", expect = "WA" }]
+
+
+[[execs]]
+filename = "brackets_subtask_2.cpp"
+overwrite = { prob_id = "brackets" }
+tests = [
+  { testcase = "0", expect = "WA" },
+  { testcase = "1", expect = "WA" },
+  { testcase = "2", expect = "AC" },
+  { testcase = "3", expect = "WA" },
+]
+
+[[execs]]
+filename = "brackets_subtask_2_WA_1.cpp"
+overwrite = { prob_id = "brackets" }
+tests = [{ testcase = "all", expect = "WA" }]
+
+[[execs]]
+filename = "brackets_subtask_2_WA_2.cpp"
+overwrite = { prob_id = "brackets" }
+tests = [{ testcase = "all", expect = "WA" }]
+
+[[execs]]
+filename = "brackets.cpp"
+overwrite = { prob_id = "brackets" }
+tests = [{ testcase = "all", expect = "AC" }]
+
+[[execs]]
+filename = "brackets_WA_1.cpp"
+overwrite = { prob_id = "brackets" }
+tests = [{ testcase = "all", expect = "WA" }]
+
+[[execs]]
+filename = "brackets_WA_2.cpp"
+overwrite = { prob_id = "brackets" }
+tests = [{ testcase = "all", expect = "WA" }]

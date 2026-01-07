@@ -1,0 +1,198 @@
+[[execs]]
+filename = "datacenter.cpp"
+overwrite = { prob_id = "datacenter" }
+tests = [{ testcase = "all", expect = "AC" }]
+
+[[execs]]
+filename = "datacenter_brute.cpp"
+overwrite = { prob_id = "datacenter" }
+tests = [
+  { testcase = "0", expect = "AC" },
+  { testcase = "1", expect = "AC" },
+  { testcase = "2", expect = "TLE" },
+  { testcase = "3", expect = "TLE" },
+  { testcase = "4", expect = "TLE" },
+  { testcase = "5", expect = "TLE" }
+]
+
+[[execs]]
+filename = "datacenter_subtask1.cpp"
+overwrite = { prob_id = "datacenter" }
+tests = [
+  { testcase = "0", expect = "WA" },
+  { testcase = "1", expect = "AC" },
+  { testcase = "2", expect = "WA" },
+  { testcase = "3", expect = "WA" },
+  { testcase = "4", expect = "WA" },
+  { testcase = "5", expect = "WA" }
+]
+
+[[execs]]
+filename = "datacenter_subtask2.cpp"
+overwrite = { prob_id = "datacenter" }
+tests = [
+  { testcase = "0", expect = "WA" },
+  { testcase = "1", expect = "AC" },
+  { testcase = "2", expect = "AC" },
+  { testcase = "3", expect = "TLE" },
+  { testcase = "4", expect = "TLE" },
+  { testcase = "5", expect = "TLE" }
+]
+
+[[execs]]
+filename = "datacenter_subtask3_lct.cpp"
+overwrite = { prob_id = "datacenter" }
+tests = [
+  { testcase = "0", expect = "WA" },
+  { testcase = "1", expect = "AC" },
+  { testcase = "2", expect = "AC" },
+  { testcase = "3", expect = "AC" },
+  { testcase = "4", expect = "WA" },
+  { testcase = "5", expect = "WA" }
+]
+
+[[execs]]
+filename = "datacenter_subtask4_rollback_dsu.cpp"
+overwrite = { prob_id = "datacenter" }
+tests = [
+  { testcase = "0", expect = "WA" },
+  { testcase = "1", expect = "WA" },
+  { testcase = "2", expect = "WA" },
+  { testcase = "3", expect = "WA" },
+  { testcase = "4", expect = "AC" },
+  { testcase = "5", expect = "WA" }
+]
+
+[[execs]]
+filename = "datacenter_subtask4_reset_dsu.cpp"
+overwrite = { prob_id = "datacenter" }
+tests = [
+  { testcase = "0", expect = "WA" },
+  { testcase = "1", expect = "WA" },
+  { testcase = "2", expect = "WA" },
+  { testcase = "3", expect = "WA" },
+  { testcase = "4", expect = "AC" },
+  { testcase = "5", expect = "WA" }
+]
+
+[[execs]]
+filename = "brackets.cpp"
+overwrite = { prob_id = "brackets" }
+tests = [{ testcase = "all", expect = "AC" }]
+
+[[execs]]
+filename = "postoffice.cpp"
+overwrite = { prob_id = "postoffice" }
+tests = [{ testcase = "all", expect = "AC" }]
+
+[[execs]]
+filename = "postoffice_nlognlogC.cpp"
+overwrite = { prob_id = "postoffice" }
+tests = [{ testcase = "all", expect = "AC" }]
+
+[[execs]]
+filename = "ev.cpp"
+overwrite = { prob_id = "ev" }
+tests = [{ testcase = "all", expect = "AC" }]
+
+[[execs]]
+filename = "chomp.cpp"
+overwrite = { prob_id = "chomp" }
+tests = [{ testcase = "all", expect = "AC" }]
+
+[[execs]]
+filename = "chomp_n4.cpp"
+overwrite = { prob_id = "chomp" }
+tests = [
+  { testcase = "0", expect = "AC" },
+  { testcase = "1", expect = "TLE" },
+  { testcase = "2", expect = "AC" },
+  { testcase = "3", expect = "TLE" }
+]
+
+[[execs]]
+filename = "decode.cpp"
+overwrite = { prob_id = "decode" }
+tests = [{ testcase = "all", expect = "AC" }]
+
+[[execs]]
+filename = "parade.cpp"
+overwrite = { prob_id = "parade" }
+tests = [{ testcase = "all", expect = "AC" }]
+
+[[execs]]
+filename = "diameter_hulan1.cpp"
+overwrite = { prob_id = "diameter" }
+tests = [
+  { testcase = "0", expect = "AC" },
+  { testcase = "1", expect = "AC" },
+  { testcase = "2", expect = "AC" },
+  { testcase = "3", expect = "AC" }
+  { testcase = "4", expect = "WA" }
+]
+
+[[execs]]
+filename = "diameter_hulan2.cpp"
+overwrite = { prob_id = "diameter" }
+tests = [
+  { testcase = "0", expect = "AC" },
+  { testcase = "1", expect = "AC" },
+  { testcase = "2", expect = "AC" },
+  { testcase = "3", expect = "AC" }
+  { testcase = "4", expect = "WA" }
+]
+
+[[execs]]
+filename = "diameter_hulan3.cpp"
+overwrite = { prob_id = "diameter" }
+tests = [
+  { testcase = "0", expect = "AC" },
+  { testcase = "1", expect = "AC" },
+  { testcase = "2", expect = "AC" },
+  { testcase = "3", expect = "AC" }
+  { testcase = "4", expect = "WA" }
+]
+
+[[execs]]
+filename = "diameter_hulan4.cpp"
+overwrite = { prob_id = "diameter" }
+tests = [
+  { testcase = "0", expect = "AC" },
+  { testcase = "1", expect = "AC" },
+  { testcase = "2", expect = "AC" },
+  { testcase = "3", expect = "AC" }
+  { testcase = "4", expect = "WA" }
+]
+
+[[execs]]
+filename = "diameter_hulan31.cpp"
+overwrite = { prob_id = "diameter" }
+tests = [
+  { testcase = "0", expect = "AC" },
+  { testcase = "1", expect = "AC" },
+  { testcase = "2", expect = "AC" },
+  { testcase = "3", expect = "AC" }
+  { testcase = "4", expect = "WA" }
+]
+
+[[execs]]
+filename = "diameter_hulan32.cpp"
+overwrite = { prob_id = "diameter" }
+tests = [
+  { testcase = "0", expect = "AC" },
+  { testcase = "1", expect = "AC" },
+  { testcase = "2", expect = "AC" },
+  { testcase = "3", expect = "AC" }
+  { testcase = "4", expect = "WA" }
+]
+
+[[execs]]
+filename = "diameter_floyd_warshall.cpp"
+overwrite = { prob_id = "diameter" }
+tests = [
+  { testcase = "0", expect = "AC" },
+  { testcase = "1", expect = "AC" },
+  { testcase = "2", expect = "TLE" },
+  { testcase = "3", expect = "TLE" }
+  { testcase = "4", expect = "TLE" }
+]

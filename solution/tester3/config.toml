@@ -1,0 +1,14 @@
+[[execs]]
+filename = "chomp_build.cpp"
+overwrite = { prob_id = "chomp" }
+tests = [{ testcase = "all", expect = "AC" }]
+
+[[execs]]
+filename = "chomp_buildeach.cpp"
+overwrite = { prob_id = "chomp" }
+tests = [
+  { testcase = "0", expect = "AC" },
+  { testcase = "1", expect = "AC" },
+  { testcase = "2", expect = "TLE" },
+  { testcase = "3", expect = "TLE" },
+]

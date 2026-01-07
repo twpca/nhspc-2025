@@ -1,0 +1,70 @@
+[[execs]]
+filename = "connections_bitmask.cpp"
+overwrite = { prob_id = "connections" }
+tests = [
+  { testcase = "0", expect = "AC" },
+  { testcase = "2", expect = "AC" }
+]
+
+[[execs]]
+filename = "connections_hulan.cpp"
+overwrite = { prob_id = "connections" }
+tests = [
+  { testcase = "1", expect = "WA" },
+  { testcase = "2", expect = "WA" },
+  { testcase = "3", expect = "WA" },
+  { testcase = "4", expect = "WA" },
+  { testcase = "5", expect = "WA" },
+  { testcase = "6", expect = "WA" },
+  { testcase = "7", expect = "WA" }
+]
+
+[[execs]]
+filename = "connections_hulan2.cpp"
+overwrite = { prob_id = "connections" }
+tests = [
+  { testcase = "1", expect = "WA" },
+  { testcase = "2", expect = "WA" },
+  { testcase = "4", expect = "WA" },
+  { testcase = "5", expect = "WA" },
+  { testcase = "6", expect = "WA" },
+  { testcase = "7", expect = "WA" }
+]
+
+[[execs]]
+filename = "connections_k32k.cpp"
+overwrite = { prob_id = "connections" }
+tests = [
+  { testcase = "1", expect = "AC" },
+  { testcase = "2", expect = "AC" },
+  { testcase = "3", expect = "AC" },
+  { testcase = "4", expect = "AC" },
+  { testcase = "5", expect = "AC" },
+  { testcase = "6", expect = "AC" },
+  { testcase = "7", expect = "TLE" }
+]
+
+[[execs]]
+filename = "connections_k32k_bad.cpp"
+overwrite = { prob_id = "connections" }
+tests = [
+  { testcase = "1", expect = "AC" },
+  { testcase = "2", expect = "WA" },
+  { testcase = "3", expect = "AC" },
+  { testcase = "4", expect = "AC" },
+  { testcase = "5", expect = "WA" },
+  { testcase = "6", expect = "WA" }
+]
+
+[[execs]]
+filename = "connections_kclosestpairs.cpp"
+overwrite = { prob_id = "connections" }
+tests = [
+  { testcase = "1", expect = "AC" },
+  { testcase = "2", expect = "WA" },
+  { testcase = "3", expect = "WA" },
+  { testcase = "4", expect = "WA" },
+  { testcase = "5", expect = "WA" },
+  { testcase = "6", expect = "WA" },
+  { testcase = "7", expect = "WA" }
+]

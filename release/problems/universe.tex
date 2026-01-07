@@ -1,0 +1,1505 @@
+\section{括號問題 (Brackets)}
+
+\subsection{問題描述}
+
+括號有許多種類，如：大括號 \texttt{\{\}}、中括號
+\texttt{{[}{]}}、以及小括號 \texttt{()}。
+
+在本題中，我們僅考慮小括號。括號通常成對使用，如果一個由括號組成的序列具有\textbf{巢狀結構
+(nested structure)}，我們稱此序列為「格式正確」。
+
+例如：
+
+\begin{itemize}
+\tightlist
+\item
+  序列 \(A=a_1a_2\cdots a_{6}=\)\texttt{()(())} 是格式正確的；
+\item
+  序列 \(B=b_1b_2\cdots b_{5}=\)\texttt{(()()}
+  則不是格式正確的，因為沒辦法在滿足每個右括號只能被配對一次的條件下，讓每個左括號都能配對到它後面的其中一個右括號。
+\end{itemize}
+
+更正式的說，「格式正確」可以定義如下：
+
+一個由括號構成的序列 \(P=p_1p_2p_3\cdots p_n\)
+為格式正確，若同時滿足以下兩個條件：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  由左到右掃描 \(p_1\) 到 \(p_n\)，在過程中任一位置的右括號 \texttt{)}
+  的數量都不超過左括號 \texttt{(} 的數量。
+\item
+  序列中左括號的總數等於右括號的總數。
+\end{enumerate}
+
+PorgramText
+是一家軟體公司，正在為程式設計師開發一款全新的文字編輯器。這款編輯器將提供許多強大的功能，其中之一是自動修正輸入錯誤。
+
+在觀察使用者的輸入行為後，PorgramText
+發現許多程式設計師因打字速度太快，常常不小心多輸入左括號或右括號。為了解決這個問題，編輯器將提供一項功能：將一個可能「格式不正確」的括號序列
+\(P\) 自動轉換為「格式正確」的序列
+\(P^\prime\)。在轉換過程中，唯一允許的操作是\textbf{刪除左括號或右括號}。
+
+PorgramText 想要讓你幫助他們：計算最少需要刪除多少個括號，才能讓 \(P\)
+轉換成一個「格式正確」的序列。
+
+\subsection{輸入格式}
+
+\begin{format}
+\f{
+$n$
+$P_1P_2\cdots P_n$
+}
+\end{format}
+
+\begin{itemize}
+\tightlist
+\item
+  \(n\) 代表括號序列的長度。
+\item
+  \(P\) 是由 \texttt{(} 和 \texttt{)} 組成的括號序列。
+\end{itemize}
+
+\subsection{輸出格式}
+
+\begin{format}
+\f{
+$ans$
+}
+\end{format}
+
+\begin{itemize}
+\tightlist
+\item
+  \(ans\) 代表最少需要刪除的括號數量。
+\end{itemize}
+
+\subsection{測資限制}
+
+\begin{itemize}
+\tightlist
+\item
+  \(1 \leq n \leq 10^5\)。
+\item
+  \(P\) 僅包含 \texttt{(} 與 \texttt{)}。
+\end{itemize}
+
+\subsection{範例測試}
+
+\begin{example}
+\exmp{
+6
+()(())
+}{%
+0
+}%
+\exmp{
+5
+(()()
+}{%
+1
+}%
+\exmp{
+3
+)((
+}{%
+3
+}%
+\end{example}
+
+\subsection{評分說明}
+
+本題共有三組子任務，條件限制如下所示：
+每一組可能包含一或多筆測試資料，該組所有測試資料皆需答對才會獲得該組分數。
+
+\begin{longtable}[]{@{}ccl@{}}
+\toprule
+子任務 & 分數 & 額外輸入限制 \\
+\midrule
+\endhead
+1 & \(30\) &
+所有左括號的出現位置均早於所有右括號（因此左右括號不會交錯出現）。 \\
+2 & \(30\) & \(ans\) 只可能會是 \(0\) 或 \(2\)。（註：只需判斷 \(P\)
+是否為「格式正確」。） \\
+3 & \(40\) & 無額外限制。 \\
+\bottomrule
+\end{longtable}
+
+\section{郵局 (Post Office Revisited)}
+
+\subsection{問題描述}
+
+在一條直線道路上共有 \(n\) 個小鎮，第 \(i\) 個小鎮的座標為
+\(x_i\)；兩個小鎮之間的距離定義為其座標差的絕對值。
+
+現計畫在 \(k\)
+個小鎮設置郵局，設置郵局後，可能會有一些郵局暫停營業，目標是讓所有小鎮到最近的有營業郵局距離盡可能短。
+
+具體而言，對於第 \(i\) 個小鎮的居民，他們的「安全容忍範圍」是一個整數
+\(s_i\)，不論哪 \(s_i\)
+家郵局暫停營業，他們仍希望能就近前往某一營業中的郵局。設在有至多 \(s_i\)
+家郵局暫停營業的最差情況下，離這個小鎮最近的郵局距離為
+\(d_i\)。我們的目標是最小化所有小鎮中 \(d_i\) 的最大值。
+
+\subsection{輸入格式}
+
+\begin{format}
+\f{
+$n\ k$
+$x_1\ s_1\ \dots \ x_n\ s_n$
+}
+\end{format}
+
+\begin{itemize}
+\tightlist
+\item
+  \(n\) 代表小鎮的數量。
+\item
+  \(k\) 代表要建設的郵局數量。
+\item
+  \(x_i\) 和 \(s_i\) 分別代表第 \(i\) 個小鎮的座標和安全容忍範圍。
+\end{itemize}
+
+\subsection{輸出格式}
+
+\begin{format}
+\f{
+$a$
+}
+\end{format}
+
+\begin{itemize}
+\tightlist
+\item
+  \(a\) 代表在最佳方式建設下，\(\max_{1 \leq i \leq n} d_i\) 的最小值。
+\end{itemize}
+
+\subsection{測資限制}
+
+\begin{itemize}
+\tightlist
+\item
+  \(2 \le n \le 10^6\)。
+\item
+  \(1 \le k \le n\)。
+\item
+  \(0 \le s_i < k\)。
+\item
+  \(1 \le x_i \le 10^9\)。
+\item
+  輸入的數皆為整數。
+\end{itemize}
+
+\subsection{範例測試}
+
+\begin{example}
+\exmp{
+4 3
+1 2 3 1 4 1 6 1
+}{%
+3
+}%
+\exmp{
+5 2
+1 0 15 0 4 0 10 0 6 0
+}{%
+5
+}%
+\end{example}
+
+\subsection{評分說明}
+
+本題共有五組子任務，條件限制如下所示。
+每一組可有一或多筆測試資料，該組所有測試資料皆需答對才會獲得該組分數。
+
+\begin{longtable}[]{@{}ccl@{}}
+\toprule
+子任務 & 分數 & 額外輸入限制 \\
+\midrule
+\endhead
+1 & \(4\) & \(n \le 1000\)，\(k = 1\)。 \\
+2 & \(19\) & \(n \le 1000\)。 \\
+3 & \(17\) & \(n \le 10^5\)，\(x_i \le 10^6\)，\(s_i = 0\)。 \\
+4 & \(33\) & \(n \le 10^5\)，\(x_i \le 10^6\)。 \\
+5 & \(27\) & 無額外限制。 \\
+\bottomrule
+\end{longtable}
+
+\section{電動車充電規劃問題 (EV)}
+
+\subsection{問題描述}
+
+小明買了一台電動車，其電池容量為\(B\)。小明知道電動車的初始電量\(b\)，他要規劃從起點開到終點的路線，使得所需的充電費用越少越好。電動車在一些路段會耗電（如平路或是上坡），在一些路段會充電（如下坡）。\textbf{這些充電路段是不會收費的}。我們用一個有向圖表示地圖，邊的權重代表電動車開過此邊會讓電量增加或減少，如果開過此邊會充電，則邊的權重為一個正數，反之如果開過此邊會耗電，則邊的權重為一個負數。我們假設圖沒有正環。
+
+電動車在行駛時，電量需要永遠大於等於\(0\)，而且無論充電量多大，電量最多為\(B\)。更明確地說，令\(p\)為電動車目前電量，並考慮一個權重為\(w\)的邊：如果\(w\)非負數，則電動車一定可以開過此邊（即使電量\(p=0\)），且剩餘電量為\(\min(B, p+w)\)；如果\(w\)是負數，且\(p+w \ge 0\)，則電動車可以開過此邊，且開過此邊後的剩餘電量為\(p+w\)；然而，如果\(p+w<0\)，則電動車無法開過此邊。
+
+地圖上有一些節點是充電站，小明可以經過多個充電站，因為充電要花時間找充電樁，小明決定路途中\textbf{最多只用一個充電站充電}。充電一單位的價格是一塊錢，小明的目標是花最少的錢到達目的地。
+
+舉例來說，考慮以下三個圖，我們用方形節點代表充電站，圓形節點則無法充電。假設電池容量\(B=100\)，起點為\(s\)，終點為\(t\)，且初始電量為\(20\)。
+
+在下圖中，電動車可以從\(s\)抵達\(t\)，且最小充電費用為\(0\)。
+
+\begin{center}
+\begin{tikzpicture}[
+    node distance=0.6cm and 1.8cm, inner sep=0pt, minimum size=5mm,
+    >=stealth
+]
+
+\node[draw,circle ] (s) {$s$};
+\node[draw,circle ] (a) [right=of s] {};
+\node[draw,circle ] (b) [right=of a] {};
+\node[draw,rectangle ] (c) [right=of b] {};
+\node[draw,circle ] (d) [right=of c] {};
+\node[draw,circle ] (t) [right=of d] {$t$};
+
+\path[->] (s) edge node[above]{\small $-5$} (a);
+\path[->] (a) edge node[above]{\small $10$} (b);
+\path[->] (b) edge node[above]{\small $-25$} (c);
+\path[->] (c) edge node[above]{\small $5$} (d);
+\path[->] (d) edge node[above]{\small $-5$} (t);
+
+\end{tikzpicture}
+\end{center}
+
+在下圖中，電動車無法從\(s\)抵達\(t\)。
+
+\begin{center}
+\begin{tikzpicture}[
+    node distance=0.6cm and 1.8cm,inner sep=0pt, minimum size=5mm,
+    >=stealth
+]
+
+\node[draw,circle ] (s) {$s$};
+\node[draw,circle ] (a) [right=of s] {};
+\node[draw,circle ] (b) [right=of a] {};
+\node[draw,circle ] (c1) [above right=0.6cm and 1.1cm of b] {};
+\node[draw,circle ] (c2) [below right=0.6cm and 1.1cm of b] {};
+\node[draw,rectangle ] (d) [right=2.5cm of b] {};
+\node[draw,circle ] (t) [right=of d] {$t$};
+
+\path[->] (s) edge node[above]{\small $-15$} (a);
+\path[->] (a) edge node[above]{\small $200$} (b);
+\path[->] (b) edge node[above left]{\small $-60$} (c1);
+\path[->] (b) edge node[below left]{\small $-80$} (c2);
+\path[->] (c1) edge node[above right]{\small $-70$} (d);
+\path[->] (c2) edge node[below right]{\small $-40$} (d);
+\path[->] (d) edge node[above]{\small $20$} (t);
+\end{tikzpicture}
+\end{center}
+
+在下圖中，電動車可以從\(s\)抵達\(t\)，且最小充電費用為\(35\)。
+
+\begin{center}
+\begin{tikzpicture}[
+    node distance=0.6cm and 1.8cm,inner sep=0pt, minimum size=5mm,
+    >=stealth
+]
+
+\node[draw,circle ] (s) {$s$};
+\node[draw,circle ] (a) [right=of s] {};
+\node[draw,rectangle ] (b) [right=of a] {};
+\node[draw,circle ] (c1) [above right=0.6cm and 1.1cm of b] {};
+\node[draw,circle ] (c2) [below right=0.6cm and 1.1cm of b] {};
+\node[draw,circle ] (d) [right=2.5cm of b] {};
+\node[draw,circle ] (t) [right=of d] {$t$};
+
+\path[->] (s) edge node[above]{\small $-10$} (a);
+\path[->] (a) edge node[above]{\small $-5$} (b);
+\path[->] (b) edge node[above left]{\small $-20$} (c1);
+\path[->] (b) edge node[below left]{\small $-30$} (c2);
+\path[->] (c1) edge node[above right]{\small $-40$} (d);
+\path[->] (c2) edge node[below right]{\small $-10$} (d);
+\path[->] (d) edge node[above]{\small $20$} (t);
+
+\end{tikzpicture}
+\end{center}
+
+\subsection{輸入格式}
+
+\begin{format}
+\f{
+$n$ $m$ $s$ $t$
+$B$ $b$
+$u_1$ $v_1$ $w_1$
+$u_2$ $v_2$ $w_2$
+$\vdots$
+$u_m$ $v_m$ $w_m$
+$g$ $p_1$ $p_2$ $\cdots$ $p_g$
+}
+\end{format}
+
+\begin{itemize}
+\tightlist
+\item
+  \(n\) 為節點數。
+\item
+  \(m\) 為邊數。
+\item
+  \(s\) 為起點編號。
+\item
+  \(t\) 為終點編號。
+\item
+  \(B\) 為電池容量。
+\item
+  \(b\) 為電池初始電量。
+\item
+  \(u_i, v_i, w_i\)
+  代表圖中有一個邊由節點\(u_i\)至節點\(v_i\)，且權重為\(w_i\)。
+\item
+  \(g\) 為充電站個數。
+\item
+  \(p_i\) 為第\(i\)個充電站的節點編號。
+\end{itemize}
+
+\subsection{輸出格式}
+
+\begin{format}
+\f{
+$a$
+}
+\end{format}
+
+\begin{itemize}
+\tightlist
+\item
+  \(a\) 代表最少所需的充電費用。如果不存在路徑抵達終點，則\(a = -1\)。
+\end{itemize}
+
+\subsection{測資限制}
+
+\begin{itemize}
+\tightlist
+\item
+  \(1 \le n\le 10^3\)。
+\item
+  \(1 \le m\le 10^4\)。
+\item
+  \(1 \le s,t\le n\)。
+\item
+  \(1 \le B\le 10^9\)。
+\item
+  \(0 \le b\le B\)。
+\item
+  \(1 \le u_i, v_i\le n\)，且 \(u_i \neq v_i\)。
+\item
+  \(-10^9 \le w_i\le 10^9\)。
+\item
+  \(0 \le g\le n\)。
+\item
+  \(1 \le p_i \le n\)。
+\item
+  保證圖沒有正環。
+\item
+  輸入的數皆為整數。
+\end{itemize}
+
+\subsection{範例測試}
+
+\begin{example}
+\exmp{
+6 5 1 6
+100 20
+1 2 -5
+2 3 10
+3 4 -25
+4 5 5
+5 6 -5
+1 4
+}{%
+0
+}%
+\exmp{
+7 7 1 7
+100 20
+1 2 -15
+2 3 200
+3 4 -60
+3 5 -80
+4 6 -70
+5 6 -40
+6 7 20
+1 6
+}{%
+-1
+}%
+\exmp{
+7 7 1 7
+100 20
+1 2 -10
+2 3 -5
+3 4 -20
+3 5 -30
+4 6 -40
+5 6 -10
+6 7 20
+1 3
+}{%
+35
+}%
+\exmp{
+7 7 1 7
+100 60
+1 2 -10
+2 3 -5
+3 4 -20
+3 5 -30
+4 6 -40
+5 6 -10
+6 7 -5
+0
+}{%
+0
+}%
+\end{example}
+
+\subsection{評分說明}
+
+本題共有四組子任務，條件限制如下所示。
+每一組可有一或多筆測試資料，該組所有測試資料皆需答對才會獲得該組分數。
+
+\begin{longtable}[]{@{}ccl@{}}
+\toprule
+子任務 & 分數 & 額外輸入限制 \\
+\midrule
+\endhead
+1 & \(15\) & 輸入滿足所有路段都不會充電，即 \(w_i\le 0\)，
+且沒有充電站，即 \(g = 0\)。 \\
+2 & \(30\) & 輸入滿足所有路段都不會充電，即 \(w_i\le 0\)。 \\
+3 & \(23\) & 輸入滿足沒有充電站，即 \(g = 0\)。 \\
+4 & \(32\) & 無額外限制。 \\
+\bottomrule
+\end{longtable}
+
+\section{Chomp! (Chomp)}
+
+\subsection{問題描述}
+
+\(\textit{Chomp!}\) 是一個經典的兩人遊戲。起始時有一片由 \(mn\) 塊大小為
+\(1 \times 1\) 的小塊巧克力連為一片的巧克力，形狀如 \(m \times n\)
+的二維陣列（其中 \(m\) 為列，\(n\)
+為行），而最左下角的那一小塊非常苦澀，大家都想避開。遊戲的玩法為輪流拿走巧克力小塊，方式是先從剩下來的巧克力挑一小塊，並把其右上方（含正上方及正右方）所有小塊同時拿掉。到最後誰拿到最左下角的那一小塊便輸了。
+
+例如起始時有 \(3 \times 4\) 的一片巧克力：
+
+\begin{center}
+\newcommand{\cellsz}{1.50cm}
+\newcommand{\cellht}{1.20cm}
+\newcommand{\sqcell}[1]{%
+  \parbox[c][\cellht][c]{\cellsz}{\centering\mbox{#1}}%
+}
+\setlength{\tabcolsep}{0pt}
+\renewcommand{\arraystretch}{1}
+\begin{tabular}{|c|c|c|c|}
+\hline
+%
+  \parbox[c][1.20cm][c]{1.50cm}{\centering\mbox{}}%
+ & %
+  \parbox[c][1.20cm][c]{1.50cm}{\centering\mbox{}}%
+ & %
+  \parbox[c][1.20cm][c]{1.50cm}{\centering\mbox{}}%
+ & %
+  \parbox[c][1.20cm][c]{1.50cm}{\centering\mbox{}}%
+ \\ \hline
+%
+  \parbox[c][1.20cm][c]{1.50cm}{\centering\mbox{}}%
+ & %
+  \parbox[c][1.20cm][c]{1.50cm}{\centering\mbox{}}%
+ & %
+  \parbox[c][1.20cm][c]{1.50cm}{\centering\mbox{}}%
+ & %
+  \parbox[c][1.20cm][c]{1.50cm}{\centering\mbox{}}%
+ \\ \hline
+%
+  \parbox[c][1.20cm][c]{1.50cm}{\centering\mbox{}}%
+ & %
+  \parbox[c][1.20cm][c]{1.50cm}{\centering\mbox{}}%
+  & %
+  \parbox[c][1.20cm][c]{1.50cm}{\centering\mbox{}}%
+  & %
+  \parbox[c][1.20cm][c]{1.50cm}{\centering\mbox{}}%
+  \\ \hline
+\end{tabular}
+\end{center}
+
+若玩家一選擇了 \(X\) 那一小塊，則連帶 \(Y\) 的那些小塊也會被拿掉：
+
+\begin{center}
+\newcommand{\cellsz}{1.50cm}
+\newcommand{\cellht}{1.20cm}
+\newcommand{\sqcell}[1]{%
+  \parbox[c][\cellht][c]{\cellsz}{\centering\mbox{#1}}%
+}
+\setlength{\tabcolsep}{0pt}
+\renewcommand{\arraystretch}{1}
+\begin{tabular}{|c|c|c|c|}
+\hline
+%
+  \parbox[c][1.20cm][c]{1.50cm}{\centering\mbox{}}%
+ & %
+  \parbox[c][1.20cm][c]{1.50cm}{\centering\mbox{$Y$}}%
+ & %
+  \parbox[c][1.20cm][c]{1.50cm}{\centering\mbox{$Y$}}%
+ & %
+  \parbox[c][1.20cm][c]{1.50cm}{\centering\mbox{$Y$}}%
+ \\ \hline
+%
+  \parbox[c][1.20cm][c]{1.50cm}{\centering\mbox{}}%
+ & %
+  \parbox[c][1.20cm][c]{1.50cm}{\centering\mbox{$X$}}%
+ & %
+  \parbox[c][1.20cm][c]{1.50cm}{\centering\mbox{$Y$}}%
+ & %
+  \parbox[c][1.20cm][c]{1.50cm}{\centering\mbox{$Y$}}%
+ \\ \hline
+%
+  \parbox[c][1.20cm][c]{1.50cm}{\centering\mbox{}}%
+ & %
+  \parbox[c][1.20cm][c]{1.50cm}{\centering\mbox{}}%
+  & %
+  \parbox[c][1.20cm][c]{1.50cm}{\centering\mbox{}}%
+  & %
+  \parbox[c][1.20cm][c]{1.50cm}{\centering\mbox{}}%
+  \\ \hline
+\end{tabular}
+\end{center}
+
+接著由玩家二從剩下的巧克力塊選擇。若玩家二此時選擇了 \(W\)
+那一小塊，則連帶 \(Z\) 的那些小塊也會被拿掉：
+
+\begin{center}
+\newcommand{\cellsz}{1.50cm}
+\newcommand{\cellht}{1.20cm}
+\newcommand{\sqcell}[1]{%
+  \parbox[c][\cellht][c]{\cellsz}{\centering\mbox{#1}}%
+}
+\setlength{\tabcolsep}{0pt}
+\renewcommand{\arraystretch}{1}
+\begin{tabular}{|c|c|c|c|}
+\hline
+%
+  \parbox[c][1.20cm][c]{1.50cm}{\centering\mbox{}}%
+ & %
+  \parbox[c][1.20cm][c]{1.50cm}{\centering\mbox{$Y$}}%
+ & %
+  \parbox[c][1.20cm][c]{1.50cm}{\centering\mbox{$Y$}}%
+ & %
+  \parbox[c][1.20cm][c]{1.50cm}{\centering\mbox{$Y$}}%
+ \\ \hline
+%
+  \parbox[c][1.20cm][c]{1.50cm}{\centering\mbox{}}%
+ & %
+  \parbox[c][1.20cm][c]{1.50cm}{\centering\mbox{$X$}}%
+ & %
+  \parbox[c][1.20cm][c]{1.50cm}{\centering\mbox{$Y$}}%
+ & %
+  \parbox[c][1.20cm][c]{1.50cm}{\centering\mbox{$Y$}}%
+ \\ \hline
+%
+  \parbox[c][1.20cm][c]{1.50cm}{\centering\mbox{}}%
+ & %
+  \parbox[c][1.20cm][c]{1.50cm}{\centering\mbox{}}%
+  & %
+  \parbox[c][1.20cm][c]{1.50cm}{\centering\mbox{$W$}}%
+  & %
+  \parbox[c][1.20cm][c]{1.50cm}{\centering\mbox{$Z$}}%
+  \\ \hline
+\end{tabular}
+\end{center}
+
+按照以上規則，我們不難證明，在遊戲中所出現的任何情形，如從左至右輸出每一行
+(column) 的巧克力小塊數，其結果必為一單調遞減 (monotonic decreasing)
+數列，且對應此數列之形狀唯一。如上述範例的最終狀態，其可以數列
+\((3, 1, 0, 0)\) 表示。 在此題目中，我們針對 \(3 \times n\) 大小巧克力的
+\(\textit{Chomp!}\)
+遊戲中出現的各種情況進行分析，目的是計算在當前的情況下，先行者是否有獲勝的走法。我們假設遊戲雙方皆絕頂聰明，會採取最好的遊玩策略來讓自己獲勝。若先行者能獲勝，我們輸出在目前情況下有多少種可以獲勝的第一步選擇，並把這些選擇枚舉出來；反之，則輸出
+\(0\)。這裡，我們將下面數上來第 \(i\) 列、左邊數過來第 \(j\)
+行的小塊巧克力編號為 \((i, j)\)，滿足左下角為 \((1, 1)\)，右上角為
+\((3, n)\)。
+
+\subsection{輸入格式}
+
+\begin{format}
+\f{
+$t$
+$n_1\ p_1\ q_1\ r_1$
+$\vdots$
+$n_t\ p_t\ q_t\ r_t$
+}
+\end{format}
+
+\begin{itemize}
+\tightlist
+\item
+  \(t\) 代表總共有 \(t\) 筆詢問。
+\item
+  \(n_i\) 代表第 \(i\) 筆詢問的巧克力總行數。
+\item
+  \(p_i, q_i, r_i\) 代表第 \(i\) 筆詢問的狀態為從左至右先有 \(p_i\) 行為
+  \(3\) 小塊巧克力，接著有 \(q_i\) 行為 \(2\) 小塊巧克力，再有 \(r_i\)
+  行為 \(1\) 小塊巧克力。
+\end{itemize}
+
+\subsection{輸出格式}
+
+\begin{format}
+\f{
+$c_1$
+$x_{1,1}\ y_{1,1}\ \dots\ x_{1,c_{1}}\ y_{1,c_{1}}$
+$\vdots$
+$c_t$
+$x_{t,1}\ y_{t,1}\ \dots\ x_{t,c_{t}}\ y_{t,c_{t}}$
+}
+\end{format}
+
+\begin{itemize}
+\tightlist
+\item
+  \(c_i\) 代表在第 \(i\)
+  筆詢問的狀態下，先行者可以獲勝的第一步選擇數。若先行者無法獲勝，則
+  \(c_i = 0\)。
+\item
+  \(x_{i,j}, y_{i,j}\) 代表第 \(i\) 筆詢問中，第 \(j\)
+  個可以作為先行者獲勝的第一步選擇的小塊巧克力編號。若 \(c_i > 1\)，請依
+  \(x\) 值小到大排序編號，若 \(x\) 值相同則依 \(y\) 值小到大排序編號。
+\end{itemize}
+
+\subsection{測資限制}
+
+\begin{itemize}
+\tightlist
+\item
+  \(1 \le t \le 1000\)。
+\item
+  \(1 \le n_i \le 500\)。
+\item
+  \(0 \le p_i, q_i, r_i \le n_i\)。
+\item
+  \(1 \le p_i + q_i + r_i \le n_i\)。
+\item
+  輸入的數皆為整數。
+\end{itemize}
+
+\subsection{範例測試}
+
+\begin{example}
+\exmp{
+4
+1 0 0 1
+10 1 0 9
+3 1 2 0
+3 1 1 1
+}{%
+0
+1
+1 4
+2
+1 3 2 2
+3
+1 3 2 2 3 1
+}%
+\exmp{
+1
+100 67 22 11
+}{%
+3
+1 100 2 59 3 18
+}%
+\end{example}
+
+\subsection{評分說明}
+
+本題共有三組子任務，條件限制如下所示。
+每一組可有一或多筆測試資料，該組所有測試資料皆需答對才會獲得該組分數。
+
+\begin{longtable}[]{@{}ccl@{}}
+\toprule
+子任務 & 分數 & 額外輸入限制 \\
+\midrule
+\endhead
+1 & \(20\) & \(t = 1\)，\(p_i = 0\)。 \\
+2 & \(37\) & \(1 \le n_i \le 50\)。 \\
+3 & \(43\) & 無額外限制。 \\
+\bottomrule
+\end{longtable}
+
+\section{解碼密鑰 (Decode)}
+
+\subsection{問題描述}
+
+在一電玩遊戲裡，有一個被稱為「中央核心」的超級電腦控制著整個城市的運作。然而，最近中央核心被一道由惡意程式碼組成的防火牆鎖住，城市陷入了癱瘓。
+
+要解開這道防火牆，必須輸入一個特定的「解鎖碼」。這個解鎖碼不是一個簡單的數字，而是第
+\(n\) 個「有效數字」。這座城市共有 \(k\) 台特殊的伺服器，其中第 \(i\)
+台伺服器帶有一個獨特的密鑰 \(p_i\)。任何一個\textbf{正整數}，只要能被這
+\(k\) 個密鑰中的至少一個整除，就可以被視為一個「有效數字」。
+
+給定 \(n\) 和 \(p_1,p_2,\ldots ,p_k\)，你的任務是找出第 \(n\)
+個「有效數字」，將其作為解鎖碼輸入「中央核心」，以拯救這座城市。
+
+舉例來說，若 \(n=10\)、\(k=3\) 且密鑰為 \(2, 3, 5\)。則因為能被 \(2, 3\)
+或 \(5\) 整除的數依序是 \(2, 3, 4, 5, 6, 8, 9, 10, 12, 14\ldots\)，而第
+\(10\) 個數是 \(14\)，因此所求為 \(14\)。
+
+\subsection{輸入格式}
+
+\begin{format}
+\f{
+$n\ k$
+$p_1 \ p_2\ \dots \ p_k$
+}
+\end{format}
+
+\begin{itemize}
+\tightlist
+\item
+  \(n\) 代表你要找出第 \(n\) 個有效數字。
+\item
+  \(k\) 代表密鑰的個數。
+\item
+  \(p_i\) 代表第 \(i\) 把密鑰的數值。
+\end{itemize}
+
+\subsection{輸出格式}
+
+\begin{format}
+\f{
+$ans$
+}
+\end{format}
+
+\begin{itemize}
+\tightlist
+\item
+  輸出一個正整數 \(ans\)，表示第 \(n\) 個能被 \(p_1,p_2,\ldots ,p_k\)
+  中至少一個數整除的數字。
+\end{itemize}
+
+\subsection{測資限制}
+
+\begin{itemize}
+\tightlist
+\item
+  \(1 \le n \le 10^9\)。
+\item
+  \(1 \le k \le 6\)。
+\item
+  \(1 \le p_1\times p_2\times\cdots\times p_k \le 10^{18}\)。
+\item
+  保證所求答案 \(\le 10^{18}\)。
+\item
+  輸入的數皆為整數。
+\end{itemize}
+
+\subsection{範例測試}
+
+\begin{example}
+\exmp{
+10 3
+2 3 5
+}{%
+14
+}%
+\exmp{
+5 2
+4 6
+}{%
+16
+}%
+\exmp{
+1000000000 4
+1806 1110 600 777767777
+}{%
+325960839000
+}%
+\end{example}
+
+\subsection{評分說明}
+
+本題共有四組測試題組，條件限制如下所示。每一組可有一或多筆測試資料，該組所有測試資料皆需答對才會獲得該組分數。
+
+\begin{longtable}[]{@{}ccl@{}}
+\toprule
+子任務 & 分數 & 額外輸入限制 \\
+\midrule
+\endhead
+1 & \(2\) & 保證所求答案 \(\le 10^{6}\)。 \\
+2 & \(27\) & \(n \le 10, k \le 2\)。 \\
+3 & \(34\) & \(n \le 10^5\)。 \\
+4 & \(37\) & 無額外限制。 \\
+\bottomrule
+\end{longtable}
+
+\section{資料中心 (Data Center)}
+
+\subsection{問題描述}
+
+世界上最大的雲端基礎設施供應商 HyperNet
+公司正在建置下一代分散式資料中心，該公司在世界各地建立了 \(n\)
+套雲端主機，編號 \(1, 2, \ldots, n\)，主機之間透過 \(m\) 條光纖
+\(K = \{K_1, K_2, \ldots, K_m\}\) 相互串連，每條光纖線路
+\(K_i = (u_i, v_i)\) 必定連接兩台不同的主機
+\((1 \leq u_i, v_i \leq n, u_i \neq v_i)\)，且該光纖網路維護成本為正整數
+\(w_i\) 。這個龐大的分散式網路未來將支撐著全球的資料交換、AI
+模型訓練與即時服務。
+
+但是為了應對能源短缺與日益嚴峻的網路攻擊，HyperNet
+決定採用動態連線策略，也就是光纖線路 \(K_i\) 只能在特定時段內
+\([l_i, r_i), 0 \leq l_i < r_i \leq d\)
+可以被開啟（但並非一定要被開啟），以降低耗能與暴露面。然而，這導致網路在不同時段的拓樸不再固定，有時甚至可能分裂成多個孤立的網段。
+
+為了確保所有的主機都能互通訊息，資料中心安全控制中心（簡稱安控中心）需要在每一個滿足
+\(0 \leq i < d\) 的時間點 \(i\) 從可以被開啟的光纖線路
+\(K' \subseteq K\) 中，自動決定應開啟哪些光纖線路
+\(K'' \subseteq K'\)，使得所有主機都能互通且這些被開啟的光纖線路維護成本加總後為最低。
+
+舉例來說，若總共有 \(5\) 台主機 \((s_1, s_2, s_3, s_4, s_5)\)，及 \(5\)
+條光纖線路
+\((K_1, K_2, K_3, K_4, K_5)\)。每條光纖連結的主機、維護成本及可開啟時段如下所示：
+
+\begin{itemize}
+\tightlist
+\item
+  \(K_1 = (s_1, s_2), w_1=5\)，且能開啟時段為 \([0, 4)\)
+\item
+  \(K_2 = (s_2, s_3), w_2=1\)，且能開啟時段為 \([0, 4)\)
+\item
+  \(K_3 = (s_4, s_5), w_3=3\)，且能開啟時段為 \([2, 6)\)
+\item
+  \(K_4 = (s_5, s_1), w_4=1\)，且能開啟時段為 \([1, 5)\)
+\item
+  \(K_5 = (s_2, s_5), w_5=2\)，且能開啟時段為 \([3, 6)\)
+\end{itemize}
+
+則：
+
+\begin{itemize}
+\tightlist
+\item
+  在時間點 \(0\) 時，可被開啟光纖線路有
+  \(K_1, K_2\)，即使全部開啟仍無法連上 \(s_4, s_5\), 因此在時間點 \(0\)
+  時無法讓所有主機都被連通。
+\item
+  在時間點 \(2\) 時，可被開啟光纖線路有
+  \(K_1, K_2, K_3, K_4\)，全部開啟即可將 \(5\)
+  台主機都連通，總維護成本為 \(5+1+3+1=10\)。
+\item
+  在時間點 \(3\) 時，可被開啟光纖線路有
+  \(K_1, K_2, K_3, K_4, K_5\)，若開啟 \(K_2, K_3, K_4, K_5\)，維護成本為
+  \(1+3+1+2=7\)；若開啟其他線路組合，維護成本皆大於 \(7\)。
+\item
+  其他時段皆無法讓所有主機被連通。
+\end{itemize}
+
+\subsection{輸入格式}
+
+\begin{format}
+\f{
+$n$ $m$ $d$
+$u_1$ $v_1$ $w_1$ $l_1$ $r_1$
+$u_2$ $v_2$ $w_2$ $l_2$ $r_2$
+$\vdots$
+$u_m$ $v_m$ $w_m$ $l_m$ $r_m$
+}
+\end{format}
+
+\begin{itemize}
+\tightlist
+\item
+  \(n\) 為節點數。
+\item
+  \(m\) 為邊數。
+\item
+  \(d\) 為時間點的上限。
+\item
+  \(u_i, v_i, w_i, l_i, r_i\) 代表有一條連接主機 \(u_i\) 與主機
+  \(v_i\)、維護成本 \(w_i\) 的光纖線路，可以在時段 \([l_i, r_i)\)
+  被開啟。
+\end{itemize}
+
+\subsection{輸出格式}
+
+\begin{format}
+\f{
+$a_0$ $a_1$ $a_2$ $\ldots$ $a_{d-1}$
+}
+\end{format}
+
+\begin{itemize}
+\tightlist
+\item
+  \(a_i\) 代表在時間點 \(i\) 將 \(n\)
+  台主機都連通的最小維護成本。若該時間點無法讓主機連通則 \(a_i = -1\)。
+\end{itemize}
+
+\subsection{測資限制}
+
+\begin{itemize}
+\tightlist
+\item
+  \(1 \leq n \leq 10^5\)。
+\item
+  \(1 \leq m \leq 3 \times 10^5\)。
+\item
+  \(1 \leq d \leq 3 \times 10^5\)。
+\item
+  \(1 \leq u_i, v_i \leq n\)，且 \(u_i \neq v_i\)。
+\item
+  \(1 \leq w_i \leq 10^9\)。
+\item
+  \(0 \leq l_i < r_i \leq d\)。
+\item
+  輸入的數皆為整數。
+\end{itemize}
+
+\subsection{範例測試}
+
+\begin{example}
+\exmp{
+5 5 6
+1 2 5 0 4
+2 3 1 0 4
+4 5 3 2 6
+5 1 1 1 5
+2 5 2 3 6
+}{%
+-1 -1 10 7 -1 -1
+}%
+\exmp{
+6 10 6
+1 2 5 0 6
+1 6 1 4 6
+3 4 2 3 6
+5 2 4 2 6
+4 5 1 0 6
+6 3 9 5 6
+3 4 8 0 6
+3 2 6 0 6
+1 4 3 1 6
+6 5 4 0 6
+}{%
+24 19 18 14 11 11
+}%
+\exmp{
+4 8 7
+1 4 1 4 5
+2 3 1 0 7
+2 1 1 0 1
+4 2 1 1 3
+3 1 1 2 6
+1 2 1 5 7
+3 4 1 0 3
+4 3 1 6 7
+}{%
+3 -1 3 -1 3 -1 3
+}%
+\end{example}
+
+\subsection{評分說明}
+
+本題共有五組子任務，條件限制如下所示。
+每一組可有一或多筆測試資料，該組所有測試資料皆需答對才會獲得該組分數。
+
+\begin{longtable}[]{@{}ccl@{}}
+\toprule
+子任務 & 分數 & 額外輸入限制 \\
+\midrule
+\endhead
+1 & \(5\) & \(d=1\)。 \\
+2 & \(9\) & \(n \leq 100\), \(r_i = d\)。 \\
+3 & \(21\) & \(r_i = d\)。 \\
+4 & \(26\) & \(w_i = 1\)。 \\
+5 & \(39\) & 無額外限制。 \\
+\bottomrule
+\end{longtable}
+
+\section{神聖的連線儀式 (Connections)}
+
+\subsection{問題描述}
+
+在遙遠的「座標王國」裡，大地上散落著 \(n\)
+個祭壇。這些祭壇是王國與諸神溝通的媒介，每一個祭壇都有自己的名字與位置，而它們的位置總是整齊地記錄在平面座標上，永不重複，依序分別為
+\((x_1 , y_1 ), (x_2 , y_2 ), \dots , (x_n , y_n )\)。
+
+每逢百年一度的「能量甦醒節」，國王必須召集全國祭司，在大地上進行一場莊嚴神聖的連線儀式。傳說中，當某些祭壇之間以神聖的光束相連，能量就會在它們之間流動，進而喚醒沉睡的巨龍與大地之靈，守護整個王國。然而，儀式並不能隨意進行。祭司必須遵循古老的規則：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  儀式中必須選出 \(k\) 條連線，其中 \(k\) 的值介於 \(1\) 到 \(18\)
+  之間。
+\item
+  每條連線都必須連接兩個不同的祭壇。
+\item
+  任何一個祭壇在整個儀式中至多只能參與一條連線，也就是說，所有連線的端點必須互不重複。
+\item
+  任兩條連線不可在平面上交叉或重疊，否則會彼此干擾。
+\end{enumerate}
+
+能量的流動並非毫無代價。兩個祭壇之間的連線會消耗祭司們的法力，而法力的消耗量與它們的距離成正比，而第
+\(i\) 個祭壇與第 \(j\) 個祭壇，即位置 \((x_i , y_i )\) 與位置
+\((x_j , y_j )\)，之間的距離的定義是歐幾里得距離：
+
+\[ \sqrt{(x_i-x_j)^2+(y_i-y_j)^2} \]
+
+因此，如果選出的連線過長，對祭司們將會是沉重的負擔，如果法力不足，將會導致連線儀式無法完成。反之，如果能找到合適的祭壇，使得總連線距離最短，那麼儀式就能以最小的法力消耗完成，並且釋放出最大的能量。
+
+作為王國的御用解題大師，你肩負重責大任。國王將祭壇的座標交給你，並要求你算出最小的總法力消耗。為了方便起見，我們採用連線的總長度來代表祭司們法力的總消耗量。你的答案將直接決定儀式能否順利完成，甚至影響王國的存亡。
+
+\subsection{輸入格式}
+
+\begin{format}
+\f{
+$n$ $k$
+$x_1$ $y_1$
+$x_2$ $y_2$
+$\vdots$
+$x_n$ $y_n$
+}
+\end{format}
+
+\begin{itemize}
+\tightlist
+\item
+  \(n\) 為祭壇數量。
+\item
+  \(k\) 為需要選出的連線數量。
+\item
+  \(x_i,y_i\) 代表第 \(i\) 個祭壇的座標是 \((x_i,y_i)\)。
+\end{itemize}
+
+\subsection{輸出格式}
+
+\begin{format}
+\f{
+$a$
+}
+\end{format}
+
+\begin{itemize}
+\tightlist
+\item
+  \(a\) 代表最小的總法力消耗。相對誤差或絕對誤差在 \(10^{-6}\)
+  以下均視為正確。也就是說，若正確答案是 \(b\)，則你的答案只要滿足
+  \[ \frac{\lvert a - b \rvert}{\max(\lvert a \rvert, \lvert b \rvert, 1)} \leq 10^{-6} \]
+  即會被視為正確。
+\end{itemize}
+
+\subsection{測資限制}
+
+\begin{itemize}
+\tightlist
+\item
+  \(1 \leq k \leq 18\)。
+\item
+  \(2k \leq n \leq 10^5\)。
+\item
+  \(0 \leq x_i, y_i \leq 10^9\)。
+\item
+  所有祭壇座標均不同。
+\item
+  輸入的數皆為整數。
+\end{itemize}
+
+\subsection{範例測試}
+
+\begin{example}
+\exmp{
+3 1
+0 0
+0 3
+9 9
+}{%
+3.0000000000
+}%
+\exmp{
+4 2
+0 0
+1 0
+5 5
+5 6
+}{%
+2.0000000000
+}%
+\end{example}
+
+\subsection{評分說明}
+
+本題共有七組子任務，條件限制如下所示。
+每一組可有一或多筆測試資料，該組所有測試資料皆需答對才會獲得該組分數。
+
+\begin{longtable}[]{@{}ccl@{}}
+\toprule
+子任務 & 分數 & 額外輸入限制 \\
+\midrule
+\endhead
+1 & \(13\) & \(k = 1\)。 \\
+2 & \(8\) & \(n \leq 20\)，\(k \leq 10\)。 \\
+3 & \(11\) & \(n \leq 3000\)，\(k \leq 2\)。 \\
+4 & \(15\) & \(k \leq 2\)。 \\
+5 & \(26\) & \(n \leq 3000\)，\(k \leq 15\)。 \\
+6 & \(17\) & \(k \leq 15\)。 \\
+7 & \(10\) & 無額外限制。 \\
+\bottomrule
+\end{longtable}
+
+\section{融合圖的直徑 (Diameter)}
+
+\subsection{問題描述}
+
+圖形結構 \(G=(V, G)\) 包含一個有限的集合 \(V(G)\)
+做為節點集合，以及一個無序對的集合 \(E(G)\)
+作為邊的集合（如圖一）。圖形結構有相當廣泛的應用，例如：交通路網、蛋白質結構的分析、計畫管理評估、都市系統結構分析、半導體晶片設計元件擺放的布線等，使得圖形結構一直是數學家和電腦科學家解決問題的好工具。
+
+\begin{center}
+\scalebox{0.6}{%
+\begin{tikzpicture}[
+    node distance=0.6cm and 1.8cm,inner sep=0pt, minimum size=10mm,
+    >=stealth
+]
+
+\node[draw,circle, line width=1pt ] (a) at (0, 0) {\Large $a$};
+\node[draw,circle, line width=1pt ] (b) at (3, 0) {\Large $b$};
+\node[draw,circle, line width=1pt ] (c) at (0, -3) {\Large $c$};
+\node[draw,circle, line width=1pt ] (d) at (3, -3) {\Large $d$};
+
+\node[draw,circle, line width=1pt ] (y) at (7, 0)     {\Large $y$};
+\node[draw,circle, line width=1pt ] (x) at (7, -2)    {\Large $x$};
+\node[draw,circle, line width=1pt ] (w) at (5.26, -3) {\Large $w$};
+\node[draw,circle, line width=1pt ] (z) at (8.73, -3) {\Large $z$};
+
+\draw[line width=1pt] (a) -- (b);
+\draw[line width=1pt] (a) -- (c);
+\draw[line width=1pt] (b) -- (d);
+\draw[line width=1pt] (c) -- (d);
+
+\draw[line width=1pt] (x) -- (w);
+\draw[line width=1pt] (x) -- (y);
+\draw[line width=1pt] (x) -- (z);
+
+\node at (1.5, -4) {\Large $G$};
+\node at (7, -4) {\Large $H$};
+
+\end{tikzpicture}
+}
+
+{\textbf{圖一}} 
+\end{center}
+
+在數學中，兩個集合 \(A\) 和 \(B\) 的笛卡兒乘積 (Cartesian
+product)，在集合論中表示為
+\(A \times B\)，是所有可能的有序對組成的集合，其中有序對的第一個對象是
+\(A\) 的成員，第二個對象是 \(B\) 的成員。圖形理論學家 \(Ray\)
+教授研究圖形性質多年，他定義兩圖形 \(G\) 與 \(H\)
+的融合圖為一個新的圖形結構並以 \(G \times H\) 表示，其點集合為
+\(V(G) \times V(H)\)，此圖形中若兩節點 \((u, v)\) 與
+\((u^\prime, v^\prime)\) 相連必須滿足：
+
+\begin{itemize}
+\tightlist
+\item
+  \(u = u^\prime\) 且 \(\{v, v^\prime\} \in E(H)\)，或
+\item
+  \(v = v^\prime\) 且 \(\{u, u^\prime\} \in E(G)\)。
+\end{itemize}
+
+圖二顯示了圖一中 \(G\) 和 \(H\) 的笛卡兒乘積。
+
+\begin{tikzpicture}[remember picture,overlay]
+    \node at (current page.south east)
+        [anchor=east,xshift=0cm, yshift=9cm, align=center] {
+            \includegraphics[width=12cm]{diameter_pic.pdf}
+        };
+\end{tikzpicture}
+
+\newpage
+
+\(Ray\)
+教授為了要進一步瞭解融合圖的性質，他定義了一些度量方式：圖形中任兩節點
+\(x\) 和 \(y\) 的距離是指從 \(x\) 到 \(y\)
+之間，所經過邊個數最小的路徑其邊的個數。若要計算一張圖的直徑，首先要求得任意兩點之間的最短路徑，在這些所有的最短路徑中，取其長度最長者，即是這張圖的直徑（如圖三）。給定兩張圖形
+\(G\) 與 \(H\)，請協助 \(Ray\) 教授計算融合圖 \(G \times H\)
+的直徑。假如答案大於或等於 \(10^9+7\)，則輸出除以 \(10^9+7\)
+之後的餘數；若沒有答案，意即存在兩點之間沒有路徑，則輸出 \(-1\)。
+
+\begin{center}
+\scalebox{0.4}{%
+\begin{tikzpicture}[
+    node distance=0.6cm and 1.8cm,inner sep=0pt, minimum size=20mm,
+    >=stealth
+]
+
+\node[draw,circle, line width=1.5pt] (s) {\huge $x$};
+\node[draw,circle, line width=1.5pt] (a) [below left=1.5cm and 1cm of s] {};
+\node[draw,circle, line width=1.5pt] (b) [below right=1.5cm and 1cm of s] {};
+\node[draw,circle, line width=1.5pt] (c) [below=1cm of a] {};
+\node[draw,circle, line width=1.5pt] (d) [below=1cm of b] {\huge $y$};
+
+\draw[line width=1.5pt] (s) -- (a);
+\draw[line width=1.5pt] (s) -- (b);
+\draw[line width=1.5pt] (a) -- (b);
+\draw[line width=1.5pt] (a) -- (c);
+\draw[line width=1.5pt] (b) -- (d);
+\draw[line width=1.5pt] (c) -- (d);
+
+\end{tikzpicture}
+}
+
+{\textbf{圖三：此圖直徑為 $2$}} 
+\end{center}
+
+\subsection{輸入格式}
+
+\begin{format}
+\f{
+$n_1$
+$e_{1,1}e_{1,2}\dots e_{1,n_1}$
+$e_{2,1}e_{2,2}\dots e_{2,n_1}$
+$\vdots$
+$e_{n_1,1}e_{n_1,2}\dots e_{n_1,n_1}$
+$n_2$
+$e^\prime_{1,1}e^\prime_{1,2}\dots e^\prime_{1,n_2}$
+$e^\prime_{2,1}e^\prime_{2,2}\dots e^\prime_{2,n_2}$
+$\vdots$
+$e^\prime_{n_2,1}e^\prime_{n_2,2}\dots e^\prime_{n_2,n_2}$
+}
+\end{format}
+
+\begin{itemize}
+\tightlist
+\item
+  \(n_1\) 代表圖 \(G\) 中的節點個數，即
+  \(\left\vert V( G )\right\vert\)。
+\item
+  \(e_{i,j}\) 代表圖 \(G\) 中，\(i\) 和 \(j\) 是否相連，其中
+  \(e_{i,j}=1\) 代表有相連，\(e_{i,j}=0\) 則代表沒有相連。
+\item
+  \(n_2\) 代表圖 \(H\) 中的節點個數，即
+  \(\left\vert V( H )\right\vert\)。
+\item
+  \(e^\prime_{i,j}\) 代表圖 \(H\) 中，\(i\) 和 \(j\) 是否相連，其中
+  \(e^\prime_{i,j}=1\) 代表有相連，\(e^\prime_{i,j}=0\) 則代表沒有相連。
+\end{itemize}
+
+\subsection{輸出格式}
+
+\begin{format}
+\f{
+$D$
+}
+\end{format}
+
+\begin{itemize}
+\tightlist
+\item
+  如果直徑存在，則 \(D\) 代表融合圖 \(G\times H\) 的直徑除以 \(10^9+7\)
+  之後的餘數。
+\item
+  如果直徑不存在，則 \(D = -1\)。
+\end{itemize}
+
+\subsection{測資限制}
+
+\begin{itemize}
+\item
+  \(1 \leq n_1 \leq 2000\)。
+\item
+  \(e_{i,j} \in \lbrace 0, 1 \rbrace\)。
+\item
+  \(\forall 1 \leq i < j \leq n_1, e_{i,j}=e_{j,i}\)。
+\item
+  保證圖 \(G\) 沒有自環，也就是 \(\forall 1\le i\le n_1, e_{i,i}=0\)。
+\item
+  \(1 \leq n_2 \leq 2000\)。
+\item
+  \(e^\prime_{i,j} \in \lbrace 0, 1 \rbrace\)。
+\item
+  \(\forall 1 \leq i < j \leq n_2, e^\prime_{i,j}=e^\prime_{j,i}\)。
+\item
+  保證圖 \(H\) 沒有自環，也就是
+  \(\forall 1\le i\le n_2, e^\prime_{i,i}=0\)。
+\end{itemize}
+
+\subsection{範例測試}
+
+\begin{example}
+\exmp{
+2
+01
+10
+2
+01
+10
+}{%
+2
+}%
+\exmp{
+4
+0101
+1010
+0101
+1010
+4
+0100
+1011
+0100
+0100
+}{%
+4
+}%
+\exmp{
+5
+01000
+10101
+01010
+00101
+01010
+1
+0
+}{%
+3
+}%
+\end{example}
+
+\subsection{評分說明}
+
+本題共有四組子任務，條件限制如下所示。 定義 \(m_1,m_2\) 依序為圖
+\(G\)、圖 \(H\) 邊的個數，也就是
+\(m_1=\left\vert E(G)\right\vert, m_2=\left\vert E(H)\right\vert\)。
+每一組可有一或多筆測試資料，該組所有測試資料皆需答對才會獲得該組分數。
+
+\begin{longtable}[]{@{}ccl@{}}
+\toprule
+子任務 & 分數 & 額外輸入限制 \\
+\midrule
+\endhead
+1 & \(18\) & \(n_1, m_1 \leq 400\)，\(n_2=1\) 且 \(m_2=0\)。 \\
+2 & \(11\) & 保證 \(G\) 和 \(H\) 都是沒有環的連通圖。 \\
+3 & \(25\) & \(m_1, m_2 \leq 4000\)。 \\
+4 & \(46\) & 無額外限制。 \\
+\bottomrule
+\end{longtable}
+
+\section{彩色遊行 (Parade)}
+
+\subsection{問題描述}
+
+繽紛的遊行活動，聚集了大量的人潮，大家穿著鮮艷的服裝，排隊一個一個往前移動。整個隊伍共有
+\(n\) 個人，其中從頭數來第 \(i\) 個人的服裝上有出現編號為
+\(l_i, l_i + 1, \dots, r_i\) 的顏色。
+
+為了讓活動更有特色，遊行的總指揮決定把參加遊行隊伍分成若干個小隊，其中每個小隊為原本隊伍的連續片段，而每個人都屬於恰一個小隊。每個小隊的得分為隊中成員服裝的\textbf{多樣性}，也就是有出現在至少一個隊員服裝上的顏色編號的種類數。整個隊伍的總分即為各個小隊的得分加總。
+
+總指揮尚未確定該將整個隊伍分成幾個小隊，他想知道對於所有
+\(x = 1, 2, \dots,k\)，若將隊伍分成恰 \(x\)
+個小隊，隊伍的總分最大可以是多少？請寫一支程式幫助總指揮。
+
+\subsection{輸入格式}
+
+\begin{format}
+\f{
+$n$ $k$
+$l_1$ $r_1$
+$l_2$ $r_2$
+$\vdots$
+$l_n$ $r_n$
+}
+\end{format}
+
+\begin{itemize}
+\tightlist
+\item
+  \(n\) 為整個隊伍的人數。
+\item
+  \(k\) 為總指揮希望的小隊數量上限。
+\item
+  \(l_i, r_i\) 代表第 \(i\) 個人服裝上出現的顏色編號為
+  \(l_i, l_i + 1, \dots, r_i\)。
+\end{itemize}
+
+\subsection{輸出格式}
+
+\begin{format}
+\f{
+$ans_1$ $ans_2$ $\cdots$ $ans_k$
+}
+\end{format}
+
+\begin{itemize}
+\tightlist
+\item
+  \(ans_x\) 代表分成恰 \(x\) 個小隊的總分最大值。
+\end{itemize}
+
+\subsection{測資限制}
+
+\begin{itemize}
+\tightlist
+\item
+  \(1 \le n\le 10^5\)。
+\item
+  \(1 \le k\le \min(n, 20)\)。
+\item
+  \(1 \le l_i \le r_i \le 10^9\)。
+\item
+  輸入的數皆為整數。
+\end{itemize}
+
+\subsection{範例測試}
+
+\begin{example}
+\exmp{
+5 1
+3 3
+5 7
+2 6
+10 11
+11 12
+}{%
+9
+}%
+\exmp{
+5 5
+1 3
+2 5
+3 6
+3 7
+5 6
+}{%
+7 11 14 16 18
+}%
+\exmp{
+10 10
+1 1
+1 1
+1 1
+3 3
+3 3
+2 2
+3 3
+1 1
+2 2
+1 1
+}{%
+3 6 7 8 9 10 10 10 10 10
+}%
+\end{example}
+
+\subsection{評分說明}
+
+本題共有四組子任務，條件限制如下所示。
+每一組可有一或多筆測試資料，該組所有測試資料皆需答對才會獲得該組分數。
+
+\begin{longtable}[]{@{}ccl@{}}
+\toprule
+子任務 & 分數 & 額外輸入限制 \\
+\midrule
+\endhead
+1 & \(6\) & \(k = 1\)。 \\
+2 & \(15\) & \(n \le 500\)。 \\
+3 & \(41\) & \(1 \le l_i = r_i \le 10^5\)。 \\
+4 & \(38\) & 無額外限制。 \\
+\bottomrule
+\end{longtable}

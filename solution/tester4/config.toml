@@ -1,0 +1,37 @@
+[[execs]]
+filename = "mn.cpp"
+overwrite = { prob_id = "ev" }
+tests = [{ testcase = "all", expect = "AC" }]
+
+[[execs]]
+filename = "dijkstra.cpp"
+overwrite = { prob_id = "ev" }
+tests = [
+  { testcase = "0", expect = "AC" },
+  { testcase = "1", expect = "AC" },
+  { testcase = "2", expect = "AC" },
+  { testcase = "3", expect = "WA" },
+  { testcase = "4", expect = "WA" },
+]
+
+[[execs]]
+filename = "spfa.cpp"
+overwrite = { prob_id = "ev" }
+tests = [
+  { testcase = "0", expect = "AC" },
+  { testcase = "1", expect = "AC" },
+  { testcase = "2", expect = "AC" },
+  { testcase = "3", expect = "AC" },
+  { testcase = "4", expect = "AC" },
+]
+
+[[execs]]
+filename = "gmn_logB.cpp"
+overwrite = { prob_id = "ev" }
+tests = [
+  { testcase = "0", expect = "AC" },
+  { testcase = "1", expect = "AC" },
+  { testcase = "2", expect = "TLE" },
+  { testcase = "3", expect = "AC" },
+  { testcase = "4", expect = "TLE" },
+]

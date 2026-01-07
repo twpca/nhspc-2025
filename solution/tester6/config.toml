@@ -1,0 +1,44 @@
+[[execs]]
+filename = "sub1.cpp"
+overwrite = { prob_id = "decode" }
+tests = [
+  { testcase = "0", expect = "WA" },
+  { testcase = "1", expect = "AC" },
+  { testcase = "2", expect = "WA" },
+  { testcase = "3", expect = "WA" },
+  { testcase = "4", expect = "WA" }
+]
+
+[[execs]]
+filename = "sub2.cpp"
+overwrite = { prob_id = "decode" }
+tests = [
+  { testcase = "0", expect = "WA" },
+  { testcase = "1", expect = "WA" },
+  { testcase = "2", expect = "AC" },
+  { testcase = "3", expect = "WA" },
+  { testcase = "4", expect = "WA" }
+]
+
+[[execs]]
+filename = "sub3.cpp"
+overwrite = { prob_id = "decode" }
+tests = [
+  { testcase = "0", expect = "TLE" },
+  { testcase = "1", expect = "AC" },
+  { testcase = "2", expect = "AC" },
+  { testcase = "3", expect = "AC" },
+  { testcase = "4", expect = "TLE" }
+]
+
+[[execs]]
+filename = "sub4.cpp"
+overwrite = { prob_id = "decode" }
+tests = [
+  { testcase = "0", expect = "AC" },
+  { testcase = "1", expect = "AC" },
+  { testcase = "2", expect = "AC" },
+  { testcase = "3", expect = "AC" },
+  { testcase = "4", expect = "AC" }
+]
+
