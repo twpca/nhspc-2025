@@ -4,3 +4,5 @@ plugins:
   - jekyll-feed
   - jekyll-remote-theme
   - github-pages
+exclude:
+  - problems/
